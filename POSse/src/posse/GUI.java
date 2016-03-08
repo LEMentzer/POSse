@@ -16,6 +16,7 @@ import java.awt.*;
  * 
  */
 public class GUI {
+    Cart cart;
     GUI() {
         JFrame f=new JFrame("POS");
         f.setSize(500,500); 
@@ -51,6 +52,7 @@ public class GUI {
                 try{
                     double d = Double.parseDouble(id);
                     //SOMEHOW ADD ITEM
+                    cart.addItem(d);
                     output.append(id + "\n");
                     input.setText("");
                 }

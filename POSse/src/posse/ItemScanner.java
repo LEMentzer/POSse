@@ -19,8 +19,8 @@ public class ItemScanner {
     }
     
     Boolean checkItem(int itemID){
-        InventoryItem item = inv.getItem(itemID);
-        if(item != null){
+        int quantity = inv.getQuantity(itemID);
+        if(quantity != -1){
             return true;
         }
         return false;
@@ -30,11 +30,7 @@ public class ItemScanner {
         Item i = s.getItem();
         int need = s.getQuantity();
         int id = i.getItemID();
-        InventoryItem item = inv.get(id);
-        int quantity = 0;
-        if(item != null){
-            quantity = item.getQuantity();
-        }
+        int quantity = inv.getQuantity(id);
         if(quantity >= need){
             return true;
         }
