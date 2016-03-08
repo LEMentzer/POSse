@@ -4,14 +4,19 @@ import java.util.ArrayList;
 class Cart{
   private int numItems;
   private ArrayList<Item> items;
+  private Inventory inv;
   
-  Cart(){
+  Cart(Inventory inv){
     items = new ArrayList<item>();
     numItems = 0;
+    this.inv = inv;
   }
   
+  //checks if item is in the cart, then adds it if it is
   void addToCart(Item i){
-    cart.add(i);
+    if (inv.checkItem(i.getItemID()){
+      cart.add(i);
+    }
   }
   
   Item getItem(int n){
@@ -36,7 +41,7 @@ class Cart{
     int low = first + 1;
     int high = last;
     
-    while (highn > low) {
+    while (high > low) {
       while (high <= high && (list.get(low).equals(pivot) != -1)) low++;
       while (low <= high && (list.get(high).equals(pivot) == -1)) high--;
       
