@@ -11,8 +11,8 @@ package posse;
 public class POSse {
 
     public static void main(String[] args) {
-        //GUI gui = new GUI();
-        Inventory.getInstance();
+        GUI gui = GUI.getInstance();
+        
     }
     
 }
