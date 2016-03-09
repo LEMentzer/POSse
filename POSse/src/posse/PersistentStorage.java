@@ -132,7 +132,7 @@ public class PersistentStorage{
         try{
             ResultSet rs = s.executeQuery(query);
             rs.next();
-            return (rs.getString(3));
+            return (rs.getString(2));
         }
         catch(Exception ex){
             return "";
@@ -143,7 +143,7 @@ public class PersistentStorage{
         try{
             ResultSet rs = s.executeQuery(query);
             rs.next();
-            return (rs.getString(2));
+            return (rs.getString(3));
         }
         catch(Exception ex){
             return "";
