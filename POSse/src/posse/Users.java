@@ -9,9 +9,10 @@ package posse;
  *
  * @author Lauren
  */
+import java.sql.*;
 public class Users {
     private static PersistentStorage data = null;
-    Users(){
+    Users() throws SQLException{
         data = PersistentStorage.getInstance();
     }
     void addUser(){
@@ -23,10 +24,10 @@ public class Users {
     void removeUser(){
         
     }
-    public static User verifyUser(int id, String password){
+    public static User verifyUser(int id, String password) throws SQLException{
         boolean check = data.verifyUser(id, password);
         if(check){
-            User newUser = new User(id, password);
+            User newUser = new User(id, password,false);
             return newUser;
         }
         else{
