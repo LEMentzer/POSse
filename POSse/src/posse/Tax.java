@@ -1,4 +1,4 @@
-package POSse;
+package posse;
 
 class Tax{
   private double taxPercentage;
