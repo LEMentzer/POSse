@@ -69,10 +69,11 @@ public class Sale {
         String begin = "RECEIPT: ";
         sb.append(begin);
         for(int i = 0; i < purchases.size(); i++) {
+            Item item = purchases.get(i).getItem();
             sb.append("\n");
-            sb.append(purchases.get(i).item.getItemID());
+            sb.append(item.getItemID());
             sb.append("\t");
-            sb.append(purchases.get(i).item.getName());
+            sb.append(item.getName());
             sb.append("\t");
             sb.append(purchases.get(i).getQuantity());
         }

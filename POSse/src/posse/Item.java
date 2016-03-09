@@ -12,7 +12,7 @@ class Item {
     this.price = price;
     this.taxable = taxable;
   }
-  
+   
   int getItemID() {
     return itemID;
   }

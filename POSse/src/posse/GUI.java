@@ -134,10 +134,10 @@ public class GUI {
                     
                 }
                 catch(NullPointerException ex){
-                    
+                    System.out.println("something is null");
                 }
                 catch(SQLException ex){
-                    
+                    System.out.println("sql didn't work");
                 }
             }
         });
@@ -147,11 +147,13 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
                 String id = input.getText();
                 String num = quantity.getText();
+                System.out.println(id + " " + num);
+                System.out.println(user.getID());
                 try{
-                    double d1 = Double.parseDouble(id);
-                    int i1 = Integer.parseInt(num);
-
-                    user.addItem(d1, i1);
+                    int i1 = Integer.parseInt(id);
+                    int i2 = Integer.parseInt(num);
+                    
+                    System.out.println(user.addItem(i1, i2));
                     //output.append(id + "\n");
                     input.setText("");
                 }
@@ -159,7 +161,7 @@ public class GUI {
                     
                 }
                 catch(NullPointerException ex){
-                    
+                    System.out.println("something is null");
                 }
             }
         });

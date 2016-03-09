@@ -21,7 +21,13 @@ public class Inventory {
         data = PersistentStorage.getInstance();
     }
     public boolean checkItem(int itemID){
-        return data.checkItem(itemID);
+        try{
+            return data.checkItem(itemID);
+        }
+        catch(SQLException e){
+            
+        }
+        return false;
     }
     public boolean incrementQuantity(int itemID, int quantity){
         return data.incrementQuantity(itemID, quantity);

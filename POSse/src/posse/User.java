@@ -1,5 +1,6 @@
 
 package posse;
+import java.sql.*;
 
 public class User {
 
@@ -43,10 +44,18 @@ public class User {
     s = new Sale();
   }
   
-  public void addItem(){
-    SaleItem sItem = new SaleItem;
-    //set sItem value,quantity to input from GUI
-    s.list.add();
+  public boolean addItem(int id, int quantity){
+      try{
+        return s.addItem(id, quantity);
+      }
+      catch(SQLException e){
+          
+      }
+      return false;
+  }
+  
+  public String getReceipt(){
+      return s.printReceipt();
   }
   
 }
