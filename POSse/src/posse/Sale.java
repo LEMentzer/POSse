@@ -47,7 +47,7 @@ public class Sale {
     
     double calculateSubtotal() {
         for(int i = 0; i < purchases.size(); i++) {
-            subtotal =+ (purchases.get(i).getTotal());
+            subtotal += (purchases.get(i).getTotal());
         }
         System.out.println("Subtotal: " + subtotal);
         return subtotal;
@@ -60,7 +60,9 @@ public class Sale {
     }
     
     double calculateTotal() {
+        subtotal = calculateSubtotal();
         tax = calculateTax();
+        
         total = tax + subtotal;
         return total;
     }
@@ -80,7 +82,7 @@ public class Sale {
             sb.append(purchases.get(i).getQuantity());
         }
         receipt = sb.toString();
-        calculateSubtotal();
+        
         receipt += ("\n\n" + calculateTotal()); 
         System.out.println(receipt);
         return receipt;
