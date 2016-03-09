@@ -3,7 +3,7 @@ package posse;
 class Tax{
   private double taxPercentage;
   
-  Tax(int taxPercentage){
+  Tax(double taxPercentage){
     this.taxPercentage = taxPercentage;
   }
   

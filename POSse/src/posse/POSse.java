@@ -1,5 +1,7 @@
 package posse;
 
+import java.sql.*;
+
 /**
  *
  * POSse Team
@@ -10,7 +12,7 @@ package posse;
  */
 public class POSse {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         GUI gui = GUI.getInstance();
         
     }
