@@ -32,8 +32,9 @@ public class Sale {
             return false;
         }
         Double price = inv.getPrice(input);
+        String name = inv.getName(input);
         // GET NAME
-        Item it = new Item(input, "Name", price, true);
+        Item it = new Item(input, name, price, true);
         SaleItem si = new SaleItem(it, quantity, price*quantity);
         purchases.add(si);
         inv.decrementQuantity(input, quantity);
@@ -46,7 +47,7 @@ public class Sale {
     
     double calculateSubtotal() {
         for(int i = 0; i < purchases.size(); i++) {
-            subtotal =+ (purchases.get(i).getTotal() * purchases.get(i).getQuantity());
+            subtotal =+ (purchases.get(i).getTotal());
         }
         System.out.println("Subtotal: " + subtotal);
         return subtotal;

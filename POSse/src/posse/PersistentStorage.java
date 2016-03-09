@@ -70,26 +70,83 @@ public class PersistentStorage{
         String query = "SELECT * FROM InventorySale WHERE UPC = "+itemID;
         try{
             result = s.executeQuery(query);
-            return true;
+            if(result != null){
+                return true;
+            }
+            return false;
         }
         catch(Exception ex){
             return false;
         }
     }
     public boolean incrementQuantity(int itemID, int quantity){
-        return true;
+        int num = getQuantity(itemID);
+        int newnum = num + quantity;
+        String query = "update InventorySale set Quantity-on-Hand = " + newnum + " where UPC = " + itemID;
+        try{
+            s.executeUpdate(query);
+            return true;
+        }
+        catch(SQLException ex){
+            
+        }
+        return false;
     }
     public boolean decrementQuantity(int itemID, int quantity){
-        String query = "update InventorySale set ";
-        return true;
+        int num = getQuantity(itemID);
+        int newnum = num - quantity;
+        String query = "update InventorySale set Quantity-on-Hand = " + newnum + " where UPC = " + itemID;
+        try{
+            s.executeUpdate(query);
+            return true;
+        }
+        catch(SQLException ex){
+            
+        }
+        return false;
     }
     public double getPrice(int itemID){
-        return 1.1;
+        String query = "SELECT * FROM ProductDescription WHERE UPC = "+itemID;
+        try{
+            ResultSet rs = s.executeQuery(query);
+            rs.next();
+            return Double.valueOf(rs.getString(4));
+        }
+        catch(Exception ex){
+            return -1;
+        }
     }
     public int getQuantity(int itemID){
-        return 1;
+        String query = "SELECT * FROM InventorySale WHERE UPC = "+itemID;
+        try{
+            ResultSet rs = s.executeQuery(query);
+            rs.next();
+            return Integer.valueOf(rs.getString(2));
+        }
+        catch(Exception ex){
+            return -1;
+        }
     }
     public String getDescription(int itemID){
-        return "asdf";
+        String query = "SELECT * FROM ProductDescription WHERE UPC = "+itemID;
+        try{
+            ResultSet rs = s.executeQuery(query);
+            rs.next();
+            return (rs.getString(3));
+        }
+        catch(Exception ex){
+            return "";
+        }
+    }
+    public String getName(int itemID){
+        String query = "SELECT * FROM ProductDescription WHERE UPC = "+itemID;
+        try{
+            ResultSet rs = s.executeQuery(query);
+            rs.next();
+            return (rs.getString(2));
+        }
+        catch(Exception ex){
+            return "";
+        }
     }
 }

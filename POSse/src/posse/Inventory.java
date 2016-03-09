@@ -44,4 +44,7 @@ public class Inventory {
     public String getDescription(int itemID){
         return data.getDescription(itemID);
     }
+    public String getName(int itemID){
+        return data.getName(itemID);
+    }
 }
