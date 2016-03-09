@@ -49,7 +49,7 @@ public class User {
         return s.addItem(id, quantity);
       }
       catch(SQLException e){
-          
+          System.out.println("sql didn't work");
       }
       return false;
   }

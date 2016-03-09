@@ -20,6 +20,7 @@ public class Sale {
         this.total = 0;
         this.subtotal = 0;
         this.tax = 0;
+        this.purchases = new ArrayList();
     }
     
     // Item(int itemID, String name, double price, boolean taxable)
@@ -34,9 +35,8 @@ public class Sale {
         // GET NAME
         Item it = new Item(input, "Name", price, true);
         SaleItem si = new SaleItem(it, quantity, price*quantity);
-        for(int i = 0; i < quantity; i++) {
-            purchases.add(si);
-        }
+        purchases.add(si);
+        inv.decrementQuantity(input, quantity);
         return true;
     }
     
@@ -46,7 +46,7 @@ public class Sale {
     
     double calculateSubtotal() {
         for(int i = 0; i < purchases.size(); i++) {
-            subtotal =+ purchases.get(i).getTotal();
+            subtotal =+ (purchases.get(i).getTotal() * purchases.get(i).getQuantity());
         }
         System.out.println("Subtotal: " + subtotal);
         return subtotal;
@@ -78,6 +78,8 @@ public class Sale {
             sb.append(purchases.get(i).getQuantity());
         }
         receipt = sb.toString();
+        calculateSubtotal();
+        receipt += ("\n\n" + calculateTotal()); 
         System.out.println(receipt);
         return receipt;
     }

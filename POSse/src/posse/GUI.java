@@ -124,6 +124,7 @@ public class GUI {
                         f.add(panel);
                         f.validate();
                         f.repaint();
+                        user.startSale();
                     }
                     else{
                         username.setText("");
@@ -156,13 +157,14 @@ public class GUI {
                     System.out.println(user.addItem(i1, i2));
                     //output.append(id + "\n");
                     input.setText("");
+                    quantity.setText("");
                 }
                 catch(NumberFormatException ex){
                     
                 }
-                catch(NullPointerException ex){
-                    System.out.println("something is null");
-                }
+//                catch(NullPointerException ex){
+//                    System.out.println("something is null??? WHAT IS IT");
+//                }
             }
         });
         
