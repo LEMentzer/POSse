@@ -95,7 +95,7 @@ public class PersistentStorage{
     public boolean decrementQuantity(int itemID, int quantity){
         int num = getQuantity(itemID);
         int newnum = num - quantity;
-        String query = "update InventorySale set Quantity-on-Hand = " + newnum + " where UPC = " + itemID;
+        String query = "update InventorySale set Quantity = " + newnum + " where UPC = " + itemID;
         try{
             s.executeUpdate(query);
             return true;

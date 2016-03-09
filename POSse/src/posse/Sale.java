@@ -60,6 +60,7 @@ public class Sale {
     }
     
     double calculateTotal() {
+        tax = calculateTax();
         total = tax + subtotal;
         return total;
     }
