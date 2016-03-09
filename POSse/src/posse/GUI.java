@@ -6,6 +6,7 @@ import java.lang.*;
 import javax.swing.*;  
 import java.awt.event.*;
 import java.awt.*;
+import java.sql.*;
 
 /**
  *
@@ -16,18 +17,19 @@ import java.awt.*;
  * 
  */
 public class GUI {
-    Users users;
     User user = null;
     private static GUI gui = null;
     
-    public static GUI getInstance(){
+    public static GUI getInstance() throws SQLException{
         if(gui == null){
             gui = new GUI();
         }
         return gui;
     }
     
-    private GUI() {
+    private GUI() throws SQLException{
+        Users users = new Users();
+        Inventory inv = new Inventory();
         JFrame f=new JFrame("POS");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(800,800); 
@@ -110,7 +112,7 @@ public class GUI {
         c.gridwidth = 5;
         panel.add(output, c);
         
-        button.addActionListener(new ActionListener() {
+        button.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 String i = username.getText();
                 int idnum = Integer.parseInt(i);
@@ -132,6 +134,9 @@ public class GUI {
                     
                 }
                 catch(NullPointerException ex){
+                    
+                }
+                catch(SQLException ex){
                     
                 }
             }

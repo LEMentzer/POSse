@@ -16,38 +16,26 @@ import java.sql.*;
  * 
  */
 public class Inventory {
-    
-    private static Inventory inv = null;
-    Connection con = null;
-    
-    private Inventory(){
-        try{
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        }
-        catch(java.lang.Exception ex){
-            System.out.println(ex);
-        }
-        String url = "jdbc:ucanaccess://POSse.accdb";
-        try{
-            con = DriverManager.getConnection(url);
-            System.out.println("Successful connection!");
-        }
-        catch(SQLException ex){
-            System.out.println("Error connecting to database!");
-            while(ex!=null){
-                System.out.println("SQL Exception: "+ex.getMessage());
-                ex = ex.getNextException();
-            }
-        }
-        catch(java.lang.Exception ex){
-            System.out.println("Unexpected error!");
-        }
+    private static PersistentStorage data = null;
+    Inventory() throws SQLException{
+        data = PersistentStorage.getInstance();
     }
-    
-    public static Inventory getInstance(){
-        if (inv == null){
-            inv = new Inventory();
-        }
-        return inv;
+    public boolean checkItem(int itemID){
+        return data.checkItem(itemID);
+    }
+    public boolean incrementQuantity(int itemID, int quantity){
+        return data.incrementQuantity(itemID, quantity);
+    }
+    public boolean decrementQuantity(int itemID, int quantity){
+        return data.decrementQuantity(itemID, quantity);
+    }
+    public double getPrice(int itemID){
+        return data.getPrice(itemID);
+    }
+    public int getQuantity(int itemID){
+        return data.getQuantity(itemID);
+    }
+    public String getDescription(int itemID){
+        return data.getDescription(itemID);
     }
 }
