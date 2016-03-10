@@ -19,6 +19,7 @@ import java.sql.*;
 public class GUI {
     User user = null;
     private static GUI gui = null;
+    JLabel cashierLabel = new JLabel("Cashier ID: 1");
     
     public static GUI getInstance() throws SQLException{
         if(gui == null){
@@ -60,11 +61,7 @@ public class GUI {
         c.weightx = 1;
         panel1.add(button, c);
         
-
         f.add(panel1);
-        
-        
- 
         
         JPanel panel = new JPanel();
         panel.setSize(800,800);
@@ -77,6 +74,7 @@ public class GUI {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weighty = 1;
         c.anchor = GridBagConstraints.NORTH;
+        panel.add(cashierLabel, c);
         panel.add(idLabel, c);
         c.weightx = 4;
         panel.add(input, c);
@@ -188,5 +186,8 @@ public class GUI {
         
         //f.add(panel);
         f.setVisible(true);
+ 
+        
     }
+  
 }
