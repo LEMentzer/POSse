@@ -25,11 +25,11 @@ public class Sale {
     
     // Item(int itemID, String name, double price, boolean taxable)
     // SaleItem(Item item, int quantity, double total)
-    Boolean addItem(int input, int quantity) throws SQLException {
+    SaleItem addItem(int input, int quantity) throws SQLException {
         Inventory inv = new Inventory();
         if(!inv.checkItem(input)) {
             // maybe return string saying invalid item?
-            return false;
+            return null;
         }
         Double price = inv.getPrice(input);
         String name = inv.getName(input);
@@ -38,7 +38,7 @@ public class Sale {
         SaleItem si = new SaleItem(it, quantity, price*quantity);
         purchases.add(si);
         inv.decrementQuantity(input, quantity);
-        return true;
+        return si;
     }
     
     Boolean removeItem(int input, int quantity) {
@@ -87,5 +87,6 @@ public class Sale {
         System.out.println(receipt);
         return receipt;
     }
+    
     
 }

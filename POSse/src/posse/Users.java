@@ -27,7 +27,7 @@ public class Users {
     public static User verifyUser(int id, String password) throws SQLException{
         boolean check = data.verifyUser(id, password);
         if(check){
-            User newUser = new User(id, password,false);
+            User newUser = User.getInstance(id, password,false);
             return newUser;
         }
         else{

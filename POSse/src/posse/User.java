@@ -8,8 +8,17 @@ public class User {
   private String password;
   private boolean managerStatus; // true if manager, false if cashier
   private Sale s;
+  private static User user = null;
   
-  public User(int employeeID, String password, boolean managerStatus){
+  public static User getInstance(){
+      return user;
+  }
+  
+  public static User getInstance(int employeeID, String password, boolean managerStatus){
+      user = new User(employeeID, password, managerStatus);
+      return user;
+  }
+  private User(int employeeID, String password, boolean managerStatus){
     this.employeeID = employeeID;
     this.password = password;
     this.managerStatus = managerStatus;
@@ -44,18 +53,20 @@ public class User {
     s = new Sale();
   }
   
-  public boolean addItem(int id, int quantity){
+  public SaleItem addItem(int id, int quantity){
       try{
         return s.addItem(id, quantity);
       }
       catch(SQLException e){
           System.out.println("sql didn't work");
       }
-      return false;
+      return null;
   }
   
   public String getReceipt(){
       return s.printReceipt();
   }
-  
+  public double getTotal(){
+      return s.calculateTotal();
+  }
 }
