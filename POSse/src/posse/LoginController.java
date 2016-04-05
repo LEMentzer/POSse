@@ -55,12 +55,11 @@ public class LoginController implements Initializable {
             user = Users.verifyUser(idnum, pass);
             if(user != null){
                 stage=(Stage) login.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
+                root = FXMLLoader.load(getClass().getResource("Panel.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
 
-                user.startSale();
             }
             else{
                 id.setText("");
