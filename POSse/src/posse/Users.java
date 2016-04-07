@@ -10,19 +10,20 @@ public class Users {
     data = PersistentStorage.getInstance();
   }
   
-  public void addUser(int employeeID, string password, boolean managerStatus) {
+  public void addUser(int employeeID, String password, boolean managerStatus) throws SQLException{
     //add this data and stuff to persistent storage
-    data.addUser(employeeID, password, managerStatus);
+        data.addUser(employeeID, password, managerStatus);
+    
   }
   
   void editUser(){
     //do a thing that I have not figured out yet bc I suck sorry
   }
   
-  void removeUser(int id){
+  void removeUser(int id) throws SQLException{
 //gui prompts for the to-be-deleted-user's ID     
 //call persistent storage and write SQL query to delete it from the database :)
-    data.removeUser(int id);
+    data.removeUser(id);
   }
   
   public static User verifyUser(int id, String password) throws SQLException{

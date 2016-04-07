@@ -39,6 +39,8 @@ public class UserController implements Initializable {
     Button addUser;
     @FXML
     Button deleteUser;
+    @FXML 
+    CheckBox manager;
     
     
     @FXML
@@ -46,7 +48,7 @@ public class UserController implements Initializable {
     
         String username = newUser.getText();
         String password = newPassword.getText();
-        users.addUser(username, password);
+        users.addUser(Integer.valueOf(username), password, manager.isSelected());
         
         
     }
@@ -54,7 +56,7 @@ public class UserController implements Initializable {
     private void deleteUserAction(ActionEvent event)throws IOException, SQLException {
         
         String username = oldUser.getText();
-        users.deleteUser(username);
+        users.removeUser(Integer.valueOf(username));
         
         
         

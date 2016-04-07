@@ -62,7 +62,7 @@ public class PersistentStorage{
     return true;
   }
   ////////
-  public void addUser(int id, String password, boolean managerStatus) {
+  public void addUser(int id, String password, boolean managerStatus) throws SQLException {
     String query = "insert into Users values ("+id+", "+password+", "+managerStatus+");";
     try {
       result = s.executeQuery(query);
@@ -73,7 +73,7 @@ public class PersistentStorage{
     }
   }
   /////////
-  public void removeUser(int id) throws SQLExeption{
+  public void removeUser(int id) throws SQLException{
     String query = "delete from Users where ID = " + id + ";";
     try {
       result = s.executeQuery(query);
