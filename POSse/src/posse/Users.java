@@ -1,37 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package posse;
 
-/**
- *
- * @author Lauren
- */
 import java.sql.*;
 public class Users {
-    private static PersistentStorage data = null;
-    Users() throws SQLException{
-        data = PersistentStorage.getInstance();
+  
+  User user = null;
+  private static PersistentStorage data = null;
+  
+  Users() throws SQLException{
+    data = PersistentStorage.getInstance();
+  }
+  
+  public void addUser(int employeeID, string password, boolean managerStatus) {
+    //add this data and stuff to persistent storage
+    data.addUser(employeeID, password, managerStatus);
+  }
+  
+  void editUser(){
+    //do a thing that I have not figured out yet bc I suck sorry
+  }
+  
+  void removeUser(int id){
+//gui prompts for the to-be-deleted-user's ID     
+//call persistent storage and write SQL query to delete it from the database :)
+    data.removeUser(int id);
+  }
+  
+  public static User verifyUser(int id, String password) throws SQLException{
+    boolean check = data.verifyUser(id, password);
+    if(check){
+      User newUser = User.getInstance(id, password,false);
+      return newUser;
     }
-    void addUser(){
-        
+    else{
+      return null;
     }
-    void editUser(){
-        
-    }
-    void removeUser(){
-        
-    }
-    public static User verifyUser(int id, String password) throws SQLException{
-        boolean check = data.verifyUser(id, password);
-        if(check){
-            User newUser = User.getInstance(id, password,false);
-            return newUser;
-        }
-        else{
-            return null;
-        }
-    }
+  }
 }
