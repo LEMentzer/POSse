@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="posse.PanelController">
+   <children>
+      <Button fx:id="saleButton" layoutX="102.0" layoutY="57.0" mnemonicParsing="false" onAction="#saleAction" prefHeight="89.0" prefWidth="146.0" text="Sale" />
+      <Button fx:id="rentalButton" layoutX="343.0" layoutY="57.0" mnemonicParsing="false" onAction="#rentalAction" prefHeight="89.0" prefWidth="146.0" text="Rental" />
+      <Button fx:id="returnButton" layoutX="102.0" layoutY="187.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="89.0" prefWidth="146.0" text="Return" />
+      <Button fx:id="usersButton" layoutX="343.0" layoutY="187.0" mnemonicParsing="false" onAction="#usersAction" prefHeight="89.0" prefWidth="146.0" text="Users" />
+      <Button fx:id="logoutButton" layoutX="227.0" layoutY="339.0" mnemonicParsing="false" onAction="#logoutAction" prefHeight="89.0" prefWidth="146.0" text="Log Out" />
+   </children>
+</AnchorPane>
