@@ -58,7 +58,7 @@ public class User {
   }
   
   public void startReturn(){
-    t = new Return();
+    t = new Returns();
   }
   
   public SaleItem addItem(int id, int quantity){
