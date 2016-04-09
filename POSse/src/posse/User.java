@@ -7,7 +7,7 @@ public class User {
   private int employeeID;
   private String password;
   private boolean managerStatus; // true if manager, false if cashier
-  private Sale s;
+  private Transaction t;
   private static User user = null;
   
   public static User getInstance(){
@@ -50,12 +50,20 @@ public class User {
   }
   
   public void startSale(){
-    s = new Sale();
+    t = new Sale();
+  }
+  
+  public void startRental(){
+    t = new Rental();
+  }
+  
+  public void startReturn(){
+    t = new Return();
   }
   
   public SaleItem addItem(int id, int quantity){
       try{
-        return s.addItem(id, quantity);
+        return t.addItem(id, quantity);
       }
       catch(SQLException e){
           System.out.println("sql didn't work");
@@ -64,9 +72,9 @@ public class User {
   }
   
   public String getReceipt(){
-      return s.printReceipt();
+      return t.printReceipt();
   }
   public double getTotal(){
-      return s.calculateTotal();
+      return t.calculateTotal();
   }
 }
