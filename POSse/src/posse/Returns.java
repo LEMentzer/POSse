@@ -7,7 +7,7 @@ import java.sql.SQLException;
  *
  * 
  */
-public class Returns {
+public class Returns extends Transaction{
     ArrayList<ReturnItem> returns;
     double returnTotal;
     double returnSubtotal;
@@ -21,7 +21,7 @@ public class Returns {
         returnTax = 0;
     }
     
-    ReturnItem addReturn(int input, int quantity) throws SQLException {
+    ReturnItem addItem(int input, int quantity) throws SQLException {
         Inventory inv = new Inventory();
         if(!inv.checkItem(input)) {
             return null;
@@ -37,7 +37,7 @@ public class Returns {
         return ret;
     }
     
-    Boolean removeReturn(int input, int quantity) throws SQLException {
+    Boolean removeItem(int input, int quantity) throws SQLException {
         Inventory inv = new Inventory();
         if(!inv.checkItem(input)) {
             return false;
