@@ -97,6 +97,19 @@ public class PersistentStorage{
       return false;
     }
   }
+  public boolean rentalcheckItem(int itemID) throws SQLException{
+        String query = "SELECT * FROM InventoryRental WHERE UPC = "+itemID;
+        try{
+            result = s.executeQuery(query);
+            if(result != null){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception ex){
+            return false;
+        }
+    }
   public boolean incrementQuantity(int itemID, int quantity){
     int num = getQuantity(itemID);
     int newnum = num + quantity;
@@ -110,6 +123,19 @@ public class PersistentStorage{
     }
     return false;
   }
+  public boolean rentalIncrementQuantity(int itemID, int quantity){
+        int num = getQuantity(itemID);
+        int newnum = num + quantity;
+        String query = "update InventoryRental set Quantity-on-Hand = " + newnum + " where UPC = " + itemID;
+        try{
+            s.executeUpdate(query);
+            return true;
+        }
+        catch(SQLException ex){
+            
+        }
+        return false;
+    }
   public boolean decrementQuantity(int itemID, int quantity){
     int num = getQuantity(itemID);
     int newnum = num - quantity;
@@ -123,8 +149,21 @@ public class PersistentStorage{
     }
     return false;
   }
+  public boolean rentalDecrementQuantity(int itemID, int quantity){
+        int num = getQuantity(itemID);
+        int newnum = num - quantity;
+        String query = "update InventoryRental set Quantity = " + newnum + " where UPC = " + itemID;
+        try{
+            s.executeUpdate(query);
+            return true;
+        }
+        catch(SQLException ex){
+            
+        }
+        return false;
+    }
   public double getPrice(int itemID){
-    String query = "SELECT * FROM ProductDescription WHERE UPC = "+itemID;
+    String query = "SELECT * FROM InventorySale WHERE UPC = "+itemID;
     try{
       ResultSet rs = s.executeQuery(query);
       rs.next();
@@ -134,6 +173,17 @@ public class PersistentStorage{
       return -1;
     }
   }
+  public double rentalgetPrice(int itemID){
+        String query = "SELECT * FROM InventoryRental WHERE UPC = "+itemID;
+        try{
+            ResultSet rs = s.executeQuery(query);
+            rs.next();
+            return Double.valueOf(rs.getString(4));
+        }
+        catch(Exception ex){
+            return -1;
+        }
+    }
   public int getQuantity(int itemID){
     String query = "SELECT * FROM InventorySale WHERE UPC = "+itemID;
     try{
@@ -145,6 +195,17 @@ public class PersistentStorage{
       return -1;
     }
   }
+  public int rentalgetQuantity(int itemID){
+        String query = "SELECT * FROM InventoryRental WHERE UPC = "+itemID;
+        try{
+            ResultSet rs = s.executeQuery(query);
+            rs.next();
+            return Integer.valueOf(rs.getString(2));
+        }
+        catch(Exception ex){
+            return -1;
+        }
+    }
   public String getDescription(int itemID){
     String query = "SELECT * FROM ProductDescription WHERE UPC = "+itemID;
     try{
