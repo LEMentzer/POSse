@@ -5,6 +5,7 @@
  */
 package posse;
 
+import java.util.Calendar;
 /**
  *
  * @author Zhuo
@@ -13,11 +14,19 @@ public class RentalItem {
   private Item item;
   private int quantity;
   private double total = 0;
+  private Calendar returnDate ; 
   
-  RentalItem(Item item, int quantity, double total) {
+  RentalItem(Item item, int quantity, double total, int rentalLength) {
     this.item = item;
     this.quantity = quantity;
     this.total = total;
+    this.returnDate = this.calculateReturnDate(rentalLength);
+  }
+  
+  Calendar calculateReturnDate(int rentalLength){
+      Calendar rightNow = Calendar.getInstance();
+      rightNow.add(rightNow.DATE , rentalLength);
+      return rightNow;
   }
   
   Item getItem() {
@@ -35,4 +44,5 @@ public class RentalItem {
   void updateQuantity(int quantity) {
     this.quantity += quantity;
   }
+  
 }
