@@ -11,7 +11,7 @@ public abstract class Transaction{
   abstract Boolean addItem(int input, int quantity);
   abstract Boolean removeItem(int input, int quantity);
   abstract double calculateTotal();
-  abstract double calculate subtotal();
+  abstract double calculateSubtotal();
   abstract double calculateTax();
   abstract String printReceipt();
   
