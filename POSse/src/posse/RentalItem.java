@@ -10,7 +10,7 @@ import java.util.Calendar;
  *
  * @author Zhuo
  */
-public class RentalItem {
+public class RentalItem extends AbstractItem{
   private Item item;
   private int quantity;
   private double total = 0;
