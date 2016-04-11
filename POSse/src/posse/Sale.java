@@ -66,7 +66,7 @@ public class Sale extends Transaction{
         return total;
     }
     
-    SaleReceipt printReceipt() {
+    Receipt printReceipt() {
         SaleReceipt sr = new SaleReceipt(purchases, total, tax, subtotal);
         return sr;
     }
