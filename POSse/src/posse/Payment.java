@@ -45,7 +45,7 @@ package posse;
     /*checks that the exDate has a length of 5 with a slash in the middle and that it is
     expiring in 2016 or later
     */
-    if(expDate.length() == 5 && expDate.charAt(2) == '/' && expDate.substr(3) >= "16") {
+    if(expDate.length() == 5 && expDate.charAt(2) == '/' && expDate.substring(3) >= "16") {
      return expDate;
     }
     else {
