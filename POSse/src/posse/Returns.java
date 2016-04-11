@@ -74,7 +74,7 @@ public class Returns extends Transaction{
         return returnTotal;
     }
     
-    String printReceipt() {
+    Receipt printReceipt() {
         ReturnReceipt r = new ReturnReceipt(returns, total, tax, subtotal);
         return r;
     }
