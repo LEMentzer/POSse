@@ -6,7 +6,7 @@ package posse;
    private double amount;
    // cash: amount given (includes extra change)
    // credit: amount available - set automatically equal to price when credit is selected in GUI
-   private String cardNumber; // sixteen digits
+   private String cardNumber; // ten digits
    private String expDate;
  
    public Payment(double amount){
@@ -42,7 +42,7 @@ package posse;
    }
    
    public String getExpDate() {
-    /*checks that the exDate has a length of 5 with a slash in the middle and that it is
+    /*checks that the expDate has a length of 5 with a slash in the middle and that it is
     expiring in 2016 or later
     */
     if(expDate.length() == 5 && expDate.charAt(2) == '/' && expDate.substring(3).compareTo("16") >= 0) {

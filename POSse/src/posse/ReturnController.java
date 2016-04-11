@@ -77,7 +77,7 @@ public class ReturnController implements Initializable {
         Stage stage; 
         Parent root;
         stage=(Stage) complete.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("Panel.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Payment.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
