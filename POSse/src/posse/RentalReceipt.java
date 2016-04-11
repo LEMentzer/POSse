@@ -8,20 +8,16 @@ public class RentalReceipt extends Receipt{
   private double tax;
   private double subtotal;
   
-  SaleReceipt(ArrayList<RentalItem> rentals, double total, double tax, double subtotal){
+  RentalReceipt(ArrayList<RentalItem> rentals, double total, double tax, double subtotal){
     this.rentals = rentals;
     this.total = total;
     this.tax = tax;
     this.subtotal = subtotal;
-    text = makeText(rentals);
-  }
-  
-  private static makeText(rentals){
     StringBuilder sb = new StringBuilder();
     String s = "Rental Receipt:\n\n";
-    sb.append(begin);
+    sb.append(s);
     for(int i = 0; i < rentals.size(); i++){
-      Item = rentals.get(i).getItem();
+      Item item = rentals.get(i).getItem();
       sb.append(item.getItemID() + "\t");
       sb.append(item.getName() + "\t");
       sb.append(rentals.get(i).getQuantity());
