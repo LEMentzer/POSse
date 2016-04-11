@@ -13,15 +13,11 @@ public class SaleReceipt extends Receipt{
     this.total = total;
     this.tax = tax;
     this.subtotal = subtotal;
-    text = makeText(purchases);
-  }
-  
-  private static makeText(purchases){
     StringBuilder sb = new StringBuilder();
     String s = "Sale Receipt:\n\n";
-    sb.append(begin);
+    sb.append(s);
     for(int i = 0; i < purchases.size(); i++){
-      Item = purchases.get(i).getItem();
+      Item item = purchases.get(i).getItem();
       sb.append(item.getItemID() + "\t");
       sb.append(item.getName() + "\t");
       sb.append(purchases.get(i).getQuantity());
