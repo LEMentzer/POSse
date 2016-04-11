@@ -14,7 +14,6 @@ public class Rental extends Transaction{
     double total;
     double subtotal;
     double tax;
-    String receipt;
     
     Rental() {
         this.total = 0;
