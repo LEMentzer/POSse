@@ -173,9 +173,10 @@ public class PersistentStorage{
     try{
       ResultSet rs = s.executeQuery(query);
       rs.next();
-      return Double.valueOf(rs.getString(4));
+      return Double.valueOf(rs.getString(3));
     }
     catch(Exception ex){
+      System.out.println(ex.getMessage());
       return -1;
     }
   }
@@ -184,7 +185,7 @@ public class PersistentStorage{
         try{
             ResultSet rs = s.executeQuery(query);
             rs.next();
-            return Double.valueOf(rs.getString(4));
+            return Double.valueOf(rs.getString(3));
         }
         catch(Exception ex){
             return -1;
@@ -195,7 +196,7 @@ public class PersistentStorage{
     try{
       ResultSet rs = s.executeQuery(query);
       rs.next();
-      return Integer.valueOf(rs.getString(2));
+      return Integer.valueOf(rs.getString(1));
     }
     catch(Exception ex){
       return -1;
@@ -206,7 +207,7 @@ public class PersistentStorage{
         try{
             ResultSet rs = s.executeQuery(query);
             rs.next();
-            return Integer.valueOf(rs.getString(2));
+            return Integer.valueOf(rs.getString(1));
         }
         catch(Exception ex){
             return -1;
@@ -220,8 +221,21 @@ public class PersistentStorage{
       return (rs.getString(2));
     }
     catch(Exception ex){
+      System.out.println(ex.getMessage());
       return "";
     }
+  }
+  public String getCategory(int itemID){
+      String query = "SELECT * FROM ProductDescription WHERE UPC = "+itemID;
+      try{
+          ResultSet rs = s.executeQuery(query);
+          rs.next();
+          return (rs.getString(3));
+      }
+      catch(Exception ex){
+          System.out.println(ex.getMessage());
+          return "";
+      }
   }
   public String getName(int itemID){
     String query = "SELECT * FROM ProductDescription WHERE UPC = "+itemID;
@@ -231,6 +245,7 @@ public class PersistentStorage{
       return (rs.getString(3));
     }
     catch(Exception ex){
+      System.out.println(ex.getMessage());
       return "";
     }
   }
