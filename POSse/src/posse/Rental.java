@@ -64,7 +64,7 @@ public class Rental extends Transaction{
         return total;
     }
     
-    RentalReceipt printReceipt() {
+    Receipt printReceipt() {
         RentalReceipt receipt = new RentalReceipt(rentals, total, tax, subtotal);
         return receipt;
     }
