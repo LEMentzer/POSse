@@ -1,6 +1,6 @@
 package posse;
 
-class SaleItem {
+class SaleItem extends AbstractItem{
   private Item item;
   private int quantity;
   private double total = 0;

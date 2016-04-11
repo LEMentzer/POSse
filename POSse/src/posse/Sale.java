@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Description:
  * 
  */
-public class Sale {
+public class Sale extends Transaction{
     ArrayList<SaleItem> purchases;
     double total;
     double subtotal;

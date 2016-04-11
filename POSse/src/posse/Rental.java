@@ -20,25 +20,25 @@ public class Rental extends Transaction{
         this.total = 0;
         this.subtotal = 0;
         this.tax = 0;
-        this.purchases = new ArrayList();
+        this.rentals = new ArrayList();
     }
     
     // Item(int itemID, String name, double price, boolean taxable)
     // SaleItem(Item item, int quantity, double total)
-    Boolean addItem(int input, int quantity) throws SQLException {
-        RentalInventory inv = new RentalInventory();
+    RentalItem addItem(int input, int quantity) throws SQLException {
+        RentInventory inv = new RentInventory();
         if(!inv.checkItem(input)) {
             // maybe return string saying invalid item?
-            return false;
+            return null;
         }
         Double price = inv.getPrice(input);
         String name = inv.getName(input);
         // GET NAME
         Item it = new Item(input, name, price, true);
-        SaleItem si = new SaleItem(it, quantity, price*quantity);
-        purchases.add(si);
+        RentalItem ri = new RentalItem(it, quantity, price*quantity);
+        rentals.add(ri);
         inv.decrementQuantity(input, quantity);
-        return true;
+        return ri;
     }
     
     Boolean removeItem(int input, int quantity) {
@@ -46,8 +46,8 @@ public class Rental extends Transaction{
     }
     
     double calculateSubtotal() {
-        for(int i = 0; i < purchases.size(); i++) {
-            subtotal =+ (purchases.get(i).getTotal());
+        for(int i = 0; i < rentals.size(); i++) {
+            subtotal =+ (rentals.get(i).getTotal());
         }
         System.out.println("Subtotal: " + subtotal);
         return subtotal;
@@ -70,14 +70,14 @@ public class Rental extends Transaction{
         StringBuilder sb = new StringBuilder();
         String begin = "RECEIPT: ";
         sb.append(begin);
-        for(int i = 0; i < purchases.size(); i++) {
-            Item item = purchases.get(i).getItem();
+        for(int i = 0; i < rentals.size(); i++) {
+            Item item = rentals.get(i).getItem();
             sb.append("\n");
             sb.append(item.getItemID());
             sb.append("\t");
             sb.append(item.getName());
             sb.append("\t");
-            sb.append(purchases.get(i).getQuantity());
+            sb.append(rentals.get(i).getQuantity());
             //something about the rental period
         }
         receipt = sb.toString();

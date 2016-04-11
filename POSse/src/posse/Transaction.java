@@ -8,8 +8,8 @@ public abstract class Transaction{
   double tax;
   String receipt;
   
-  abstract Boolean addItem(int input, int quantity);
-  abstract Boolean removeItem(int input, int quantity);
+  abstract AbstractItem addItem(int input, int quantity) throws SQLException;
+  abstract Boolean removeItem(int input, int quantity) throws SQLException;
   abstract double calculateTotal();
   abstract double calculateSubtotal();
   abstract double calculateTax();

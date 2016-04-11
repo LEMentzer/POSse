@@ -4,7 +4,7 @@ package posse;
  *
  * @author Irene
  */
-public class ReturnItem {
+public class ReturnItem extends AbstractItem{
     private Item item;
     private int quantity;
     private double total = 0;

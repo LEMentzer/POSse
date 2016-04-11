@@ -57,7 +57,7 @@ public class RentalController implements Initializable {
             int i1 = Integer.parseInt(id);
             int i2 = Integer.parseInt(num);
 
-            SaleItem item = user.addItem(i1, i2);
+            AbstractItem item = user.addItem(i1, i2);
             itemID.setText("");
             quantity.setText("");
             
