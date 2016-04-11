@@ -73,7 +73,13 @@ public class RentalController implements Initializable {
     private void completeButtonAction(ActionEvent event)throws IOException, SQLException {
         subtotal.setText(String.valueOf(user.getTotal()));
         
-        
+        Stage stage; 
+        Parent root;
+        stage=(Stage) complete.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("Panel.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     
     @Override

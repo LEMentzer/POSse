@@ -50,14 +50,26 @@ public class UserController implements Initializable {
         String password = newPassword.getText();
         users.addUser(Integer.valueOf(username), password, manager.isSelected());
         
-        
+        Stage stage; 
+        Parent root;
+        stage=(Stage) deleteUser.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("Panel.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     private void deleteUserAction(ActionEvent event)throws IOException, SQLException {
         
         String username = oldUser.getText();
         users.removeUser(Integer.valueOf(username));
-        
+        Stage stage; 
+        Parent root;
+        stage=(Stage) deleteUser.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("Panel.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
         
         
     }

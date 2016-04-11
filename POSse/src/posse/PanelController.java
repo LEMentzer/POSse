@@ -58,7 +58,7 @@ public class PanelController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
-        //user.startRental();
+        user.startRental();
     }
     
     @FXML
@@ -71,7 +71,7 @@ public class PanelController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
-        //user.startReturn();
+        user.startReturn();
     }
     
     @FXML
