@@ -14,6 +14,7 @@ package posse;
      type = false;
      this.amount = amount;
      cardNumber = null;
+     expDate = null;
    }
    
    public Payment(double amount, String cardNumber, String expDate){
