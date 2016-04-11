@@ -14,7 +14,6 @@ public class Sale extends Transaction{
     double total;
     double subtotal;
     double tax;
-    String receipt;
     
     Sale() {
         this.total = 0;
