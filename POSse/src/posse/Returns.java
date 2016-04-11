@@ -12,7 +12,6 @@ public class Returns extends Transaction{
     double returnTotal;
     double returnSubtotal;
     double returnTax;
-    String returnReceipt;
     
     Returns() {
         returns = new ArrayList();
@@ -76,7 +75,7 @@ public class Returns extends Transaction{
     }
     
     String printReceipt() {
-        returnReceipt = "You will receive " + returnTotal + " in ...";
-        return returnReceipt;
+        ReturnReceipt r = new ReturnReceipt(returns, total, tax, subtotal);
+        return r;
     }
 }
