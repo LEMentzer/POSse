@@ -65,10 +65,10 @@ public class PersistentStorage{
   public void addUser(int id, String password, boolean managerStatus) throws SQLException {
     String query = null;
         if (managerStatus == true) {
-            query = "INSERT INTO Users VALUES ("+id+",'"+id+"','"+password+"');";
+            query = "INSERT INTO Users VALUES ("+id+",1,'"+password+"');";
         }
         else {
-            query = "INSERT INTO Users VALUES ("+id+",'0','"+password+"');";
+            query = "INSERT INTO Users VALUES ("+id+",0,"+password+"');";
         }
         try {
           int i = s.executeUpdate(query);
