@@ -65,25 +65,8 @@ public class Rental extends Transaction{
         return total;
     }
     
-    String printReceipt() {
-        // prints receipt of items
-        StringBuilder sb = new StringBuilder();
-        String begin = "RECEIPT: ";
-        sb.append(begin);
-        for(int i = 0; i < rentals.size(); i++) {
-            Item item = rentals.get(i).getItem();
-            sb.append("\n");
-            sb.append(item.getItemID());
-            sb.append("\t");
-            sb.append(item.getName());
-            sb.append("\t");
-            sb.append(rentals.get(i).getQuantity());
-            //something about the rental period
-        }
-        receipt = sb.toString();
-        calculateSubtotal();
-        receipt += ("\n\n" + calculateTotal()); 
-        System.out.println(receipt);
+    RentalReceipt printReceipt() {
+        RentalReceipt receipt = new RentalReceipt(rentals, total, tax, subtotal);
         return receipt;
     }
     
