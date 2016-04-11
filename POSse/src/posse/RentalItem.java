@@ -6,6 +6,7 @@
 package posse;
 
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author Zhuo
@@ -45,4 +46,8 @@ public class RentalItem extends AbstractItem{
     this.quantity += quantity;
   }
   
+  String getReturnDate(){
+    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+    return sdf.format.(returnDate.getTime());
+  }
 }
