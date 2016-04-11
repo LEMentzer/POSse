@@ -6,7 +6,7 @@ package posse;
    private double amount;
    // cash: amount given (includes extra change)
    // credit: amount available - set automatically equal to price when credit is selected in GUI
-   private String cardNumber; // ten digits
+   private String cardNumber; // sixteen digits
    private String expDate;
  
    public Payment(double amount){
@@ -34,7 +34,7 @@ package posse;
    }
    
    public String getCardNumber(){
-     if(cardNumber.length() == 10){
+     if(cardNumber.length() == 16){
        return cardNumber; // verify proper length of card number
      } else {
        return null; // return null if cash type or improper card number format
