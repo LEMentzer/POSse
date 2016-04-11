@@ -72,7 +72,8 @@ public class User {
   }
   
   public String getReceipt(){
-      return t.printReceipt();
+    Receipt r = t.printReceipt();
+    return r.getText();
   }
   public double getTotal(){
       return t.calculateTotal();
