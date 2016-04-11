@@ -63,25 +63,31 @@ public class PersistentStorage{
   }
   ////////
   public void addUser(int id, String password, boolean managerStatus) throws SQLException {
-    String query = "insert into Users values ("+id+", "+password+", "+managerStatus+");";
-    try {
-      result = s.executeQuery(query);
-      System.out.println("User added.");
-    }
-    catch (Exception ex) {
-      System.out.println("User could not be added.");
-    }
+    String query = null;
+        if (managerStatus == true) {
+            query = "INSERT INTO Users VALUES ("+id+",'"+id+"','"+password+"');";
+        }
+        else {
+            query = "INSERT INTO Users VALUES ("+id+",'0','"+password+"');";
+        }
+        try {
+          int i = s.executeUpdate(query);
+          System.out.println("User added.");
+        }
+        catch (Exception ex) {
+            System.out.println("User could not be added.");
+        }
   }
   /////////
   public void removeUser(int id) throws SQLException{
-    String query = "delete from Users where ID = " + id + ";";
-    try {
-      result = s.executeQuery(query);
-      System.out.println("User deleted.");
-    }
-    catch(Exception ex) {
-      System.out.println("User could not be deleted.");
-    }
+    String query = "DELETE FROM Users where ID = " + id;
+        try {
+            int i = s.executeUpdate(query);
+            System.out.println("User deleted.");
+        }
+        catch(Exception ex) {
+            System.out.println("User could not be deleted.");
+        }
   }
   
   public boolean checkItem(int itemID) throws SQLException{
