@@ -22,7 +22,7 @@ public class User {
     this.employeeID = employeeID;
     this.password = password;
     this.managerStatus = managerStatus;
-    s = null;
+    t = null;
   }
   
   public void setPassword(String newPassword){
@@ -61,7 +61,7 @@ public class User {
     t = new Returns();
   }
   
-  public SaleItem addItem(int id, int quantity){
+  public AbstractItem addItem(int id, int quantity){
       try{
         return t.addItem(id, quantity);
       }
