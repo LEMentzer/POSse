@@ -1,4 +1,0 @@
-class SaleItem {
-  private Item item;
-  private int quantity;
-}
