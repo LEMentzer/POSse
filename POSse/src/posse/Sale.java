@@ -67,25 +67,9 @@ public class Sale extends Transaction{
         return total;
     }
     
-    String printReceipt() {
-        // prints receipt of items
-        StringBuilder sb = new StringBuilder();
-        String begin = "RECEIPT: ";
-        sb.append(begin);
-        for(int i = 0; i < purchases.size(); i++) {
-            Item item = purchases.get(i).getItem();
-            sb.append("\n");
-            sb.append(item.getItemID());
-            sb.append("\t");
-            sb.append(item.getName());
-            sb.append("\t");
-            sb.append(purchases.get(i).getQuantity());
-        }
-        receipt = sb.toString();
-        
-        receipt += ("\n\n" + calculateTotal()); 
-        System.out.println(receipt);
-        return receipt;
+    SaleReceipt printReceipt() {
+        SaleReceipt sr = new SaleReceipt(purchases, total, tax, subtotal);
+        return sr;
     }
     
     
