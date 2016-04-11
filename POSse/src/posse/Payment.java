@@ -7,6 +7,7 @@ package posse;
    // cash: amount given (includes extra change)
    // credit: amount available - set automatically equal to price when credit is selected in GUI
    private String cardNumber; // ten digits
+   private String expDate;
  
    public Payment(double amount){
      // constructor for cash payment
@@ -15,11 +16,12 @@ package posse;
      cardNumber = null;
    }
    
-   public Payment(double amount, String cardNumber){
+   public Payment(double amount, String cardNumber, String expDate){
      // constructor for credit payment
      type = true;
      this.amount = amount;
      this.cardNumber = cardNumber; // currently no check for lenght upon construction
+     this.expDate = expDate;
    }
    
    public boolean isCredit(){
@@ -38,4 +40,12 @@ package posse;
      }
    }
    
+   public String getExpDate() {
+    if(expDate.length() == 5) {
+     return expDate;
+    }
+    else {
+     return null;
+    }
+   }
  }
