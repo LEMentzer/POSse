@@ -119,7 +119,7 @@ public class PersistentStorage{
   public boolean incrementQuantity(int itemID, int quantity){
     int num = getQuantity(itemID);
     int newnum = num + quantity;
-    String query = "update InventorySale set Quantity-on-Hand = " + newnum + " where UPC = " + itemID;
+    String query = "update InventorySale set Quantity = " + newnum + " where UPC = " + itemID;
     try{
       s.executeUpdate(query);
       return true;
@@ -130,9 +130,9 @@ public class PersistentStorage{
     return false;
   }
   public boolean rentalIncrementQuantity(int itemID, int quantity){
-        int num = getQuantity(itemID);
+        int num = rentalgetQuantity(itemID);
         int newnum = num + quantity;
-        String query = "update InventoryRental set Quantity-on-Hand = " + newnum + " where UPC = " + itemID;
+        String query = "update InventoryRental set Quantity = " + newnum + " where UPC = " + itemID;
         try{
             s.executeUpdate(query);
             return true;
@@ -156,7 +156,7 @@ public class PersistentStorage{
     return false;
   }
   public boolean rentalDecrementQuantity(int itemID, int quantity){
-        int num = getQuantity(itemID);
+        int num = rentalgetQuantity(itemID);
         int newnum = num - quantity;
         String query = "update InventoryRental set Quantity = " + newnum + " where UPC = " + itemID;
         try{
@@ -185,7 +185,7 @@ public class PersistentStorage{
         try{
             ResultSet rs = s.executeQuery(query);
             rs.next();
-            return Double.valueOf(rs.getString(3));
+            return Double.valueOf(rs.getString(4));
         }
         catch(Exception ex){
             return -1;
@@ -207,7 +207,7 @@ public class PersistentStorage{
         try{
             ResultSet rs = s.executeQuery(query);
             rs.next();
-            return Integer.valueOf(rs.getString(1));
+            return Integer.valueOf(rs.getString(2));
         }
         catch(Exception ex){
             return -1;
