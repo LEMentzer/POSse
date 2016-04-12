@@ -29,7 +29,7 @@ import java.util.ArrayList;
  */
 public class RentalController implements Initializable {
     User user;
-    Inventory inv;
+    RentInventory inv;
     
     @FXML
     private Label userID;
@@ -61,7 +61,7 @@ public class RentalController implements Initializable {
             itemID.setText("");
             quantity.setText("");
             
-            sale.appendText(id + "\t" + item.getItem().getName() + "\t" + num + "\t" + item.getTotal() + "\n");
+            sale.appendText(id + "\t" + item.getItem().getName() + "\t\t" + num + "\t" + item.getTotal() + "\n");
         }
         catch(NumberFormatException ex){
 
@@ -88,9 +88,11 @@ public class RentalController implements Initializable {
         int id = user.getID();
         userID.setText("Cashier ID: " + id);
         try{
-            inv = new Inventory();
+            inv = new RentInventory();
         }
-        catch(Exception e){}
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }    
     
     
