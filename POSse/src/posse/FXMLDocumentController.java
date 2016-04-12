@@ -69,7 +69,8 @@ public class FXMLDocumentController implements Initializable {
 
         }
         
-        subtotal.setText(String.valueOf(user.getTotal()));
+        DecimalFormat f = new DecimalFormat("##.00");
+        subtotal.setText(String.valueOf(f.format(user.getTotal())));
         
     }
     
