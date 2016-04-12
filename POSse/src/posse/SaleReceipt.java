@@ -1,4 +1,5 @@
 package posse;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class SaleReceipt extends Receipt{
@@ -21,13 +22,15 @@ public class SaleReceipt extends Receipt{
       sb.append(item.getItemID() + "\t");
       sb.append(item.getName() + "\t");
       sb.append(purchases.get(i).getQuantity());
+      sb.append("\n");
     }
     
     text = sb.toString();
-    
-    text += ("\n\nSubtotal: " + "$" + subtotal);
-    text += ("\nTax: " + "$" + tax);
-    text += ("\nTotal: " + "$" + total);
+
+    DecimalFormat f = new DecimalFormat("##.00");
+    text += ("\n\nSubtotal: " + "$" + f.format(subtotal));
+    text += ("\nTax: " + "$" + f.format(tax));
+    text += ("\nTotal: " + "$" + f.format(total));
   }
   
   public String getText(){

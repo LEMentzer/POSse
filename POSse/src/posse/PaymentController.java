@@ -85,7 +85,8 @@ public class PaymentController implements Initializable {
         amount = user.getTotal();
         //payment = new Payment(amount);
         DecimalFormat f = new DecimalFormat("##.00");
-        total.setText("Total: $" + f.format(amount));
+        //total.setText("Total: $" + f.format(amount));
+        total.setText(user.getReceipt());
     }    
     
 }
