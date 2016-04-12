@@ -15,6 +15,7 @@ import javafx.scene.control.cell.*;
 import javafx.scene.*;
 import javafx.stage.*;
 import java.sql.*;
+import java.text.DecimalFormat;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.beans.property.SimpleStringProperty;
@@ -61,17 +62,21 @@ public class RentalController implements Initializable {
             itemID.setText("");
             quantity.setText("");
             
-            sale.appendText(id + "\t" + item.getItem().getName() + "\t\t" + num + "\t" + item.getTotal() + "\n");
+            DecimalFormat f = new DecimalFormat("##.00");
+            sale.appendText(id + "\t" + item.getItem().getName() + "\t\t" + num + "\t" + f.format(item.getTotal()) + "\n");
         }
         catch(NumberFormatException ex){
 
         }
         
+        DecimalFormat f = new DecimalFormat("##.00");
+        subtotal.setText(String.valueOf(f.format(user.getTotal())));
+        
     }
     
     @FXML
     private void completeButtonAction(ActionEvent event)throws IOException, SQLException {
-        subtotal.setText(String.valueOf(user.getTotal()));
+        //subtotal.setText(String.valueOf(user.getTotal()));
         
         Stage stage; 
         Parent root;
