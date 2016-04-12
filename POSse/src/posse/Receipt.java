@@ -6,4 +6,6 @@ public abstract class Receipt{
   private double total;
   private double tax;
   private double subtotal;
+  
+  abstract String getText();
 }

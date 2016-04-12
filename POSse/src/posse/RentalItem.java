@@ -15,7 +15,7 @@ public class RentalItem extends AbstractItem{
   private Item item;
   private int quantity;
   private double total = 0;
-  private Calendar returnDate ; 
+  private Calendar returnDate; 
   
   RentalItem(Item item, int quantity, double total, int rentalLength) {
     this.item = item;
@@ -48,6 +48,7 @@ public class RentalItem extends AbstractItem{
   
   String getReturnDate(){
     SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-    return sdf.format.(returnDate.getTime());
+    String formatted = sdf.format(returnDate.getTime());
+    return formatted;
   }
 }
