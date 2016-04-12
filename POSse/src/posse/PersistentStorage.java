@@ -142,6 +142,33 @@ public class PersistentStorage{
         }
         return false;
     }
+  public boolean returnIncrementQuantity(int itemID, int quantity, double price){
+        int num = returngetQuantity(itemID);
+        if(num == -1){
+            
+            String query = "INSERT INTO InventoryReturn VALUES ("+itemID+", "+ quantity+ ", "+price+"');";
+            try {
+              int i = s.executeUpdate(query);
+              System.out.println("Return added.");
+            }
+            catch (Exception ex) {
+                System.out.println("Return could not be added.");
+            }
+            return false;
+        }
+        else{
+            int newnum = num + quantity;
+            String query = "update InventoryReturn set Quantity = " + newnum + " where UPC = " + itemID;
+            try{
+                s.executeUpdate(query);
+                return true;
+            }
+            catch(SQLException ex){
+
+            }
+            return false;
+        }
+    }
   public boolean decrementQuantity(int itemID, int quantity){
     int num = getQuantity(itemID);
     int newnum = num - quantity;
@@ -204,6 +231,17 @@ public class PersistentStorage{
   }
   public int rentalgetQuantity(int itemID){
         String query = "SELECT * FROM InventoryRental WHERE UPC = "+itemID;
+        try{
+            ResultSet rs = s.executeQuery(query);
+            rs.next();
+            return Integer.valueOf(rs.getString(2));
+        }
+        catch(Exception ex){
+            return -1;
+        }
+    }
+  public int returngetQuantity(int itemID){
+        String query = "SELECT * FROM InventoryReturn WHERE UPC = "+itemID;
         try{
             ResultSet rs = s.executeQuery(query);
             rs.next();

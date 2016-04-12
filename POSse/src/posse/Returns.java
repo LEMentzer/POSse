@@ -22,17 +22,18 @@ public class Returns extends Transaction{
     
     ReturnItem addItem(int input, int quantity) throws SQLException {
         Inventory inv = new Inventory();
+        ReturnInventory retinv = new ReturnInventory();
         if(!inv.checkItem(input)) {
             return null;
         }
-        Double price = inv.getPrice(input);
+        double price = inv.getPrice(input);
         String name = inv.getName(input);
         Item it = new Item(input, name, price, true);
         ReturnItem ret = new ReturnItem(it, quantity, price*quantity);
         returns.add(ret);
         
         // increment quantity bc adding return
-        inv.incrementQuantity(input, quantity);
+        retinv.incrementQuantity(input, quantity, price);
         return ret;
     }
     
@@ -77,7 +78,7 @@ public class Returns extends Transaction{
     }
     
     Receipt printReceipt() {
-        ReturnReceipt r = new ReturnReceipt(returns, total, tax, subtotal);
+        ReturnReceipt r = new ReturnReceipt(returns, returnTotal, returnTax, returnSubtotal);
         return r;
     }
 }
