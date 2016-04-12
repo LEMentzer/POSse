@@ -61,6 +61,27 @@ public class PersistentStorage{
     System.out.println("Successful login!");
     return true;
   }
+  public boolean getManagerStatus(int id) throws SQLException{
+      String query = "SELECT * FROM Users WHERE ID = "+id;
+    try{
+      ResultSet rs = s.executeQuery(query);
+      rs.next();
+      int value = Integer.valueOf(rs.getString(3));
+      System.out.println(value);
+      if(value == 1){
+          return true;
+      }
+      else{
+          return false;
+      }
+    }
+    catch(Exception ex){
+      System.out.println(ex.getMessage() + " Incorrect");
+      return false;      
+    }
+    
+  
+  }
   ////////
   public void addUser(int id, String password, boolean managerStatus) throws SQLException {
     String query = null;

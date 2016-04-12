@@ -76,13 +76,16 @@ public class PanelController implements Initializable {
     
     @FXML
     private void usersAction(ActionEvent event)throws IOException{
-        Stage stage; 
-        Parent root;
-        stage=(Stage) saleButton.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("User.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        
+        if(user.isManager()){
+            Stage stage; 
+            Parent root;
+            stage=(Stage) saleButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("User.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
 
         //user.startUsers();
     }
