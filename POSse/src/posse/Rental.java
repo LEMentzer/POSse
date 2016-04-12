@@ -45,6 +45,7 @@ public class Rental extends Transaction{
     }
     
     double calculateSubtotal() {
+        subtotal = 0;
         for(int i = 0; i < rentals.size(); i++) {
             subtotal =+ (rentals.get(i).getTotal());
         }
@@ -59,6 +60,8 @@ public class Rental extends Transaction{
     }
     
     double calculateTotal() {
+        total = 0;
+        subtotal = calculateSubtotal();
         tax = calculateTax();
         total = tax + subtotal;
         return total;

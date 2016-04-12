@@ -53,6 +53,7 @@ public class Returns extends Transaction{
     }
     
     double calculateSubtotal() {
+        returnSubtotal = 0;
         for(int i = 0; i < returns.size(); i++) {
             returnSubtotal += (returns.get(i).getTotal());
         }
@@ -70,6 +71,7 @@ public class Returns extends Transaction{
         returnSubtotal = calculateSubtotal();
         returnTax = calculateTax();
         
+        returnTotal = 0;
         returnTotal = returnTax + returnSubtotal;
         return returnTotal;
     }
