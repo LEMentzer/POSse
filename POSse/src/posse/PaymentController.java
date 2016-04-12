@@ -7,20 +7,21 @@ package posse;
 
 import java.io.*;
 import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.*;
-import javafx.scene.*;
-import javafx.stage.*;
 import java.sql.*;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.FXML;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.*;
-import java.util.Arrays;
-import java.util.ArrayList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.*;
+import javafx.stage.*;
 /**
  * FXML Controller class
  *
@@ -83,7 +84,8 @@ public class PaymentController implements Initializable {
         user = User.getInstance();
         amount = user.getTotal();
         //payment = new Payment(amount);
-        total.setText("Total: $" + amount);
+        DecimalFormat f = new DecimalFormat("##.00");
+        total.setText("Total: $" + f.format(amount));
     }    
     
 }

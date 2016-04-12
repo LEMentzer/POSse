@@ -45,6 +45,7 @@ public class Sale extends Transaction{
     }
     
     double calculateSubtotal() {
+        subtotal = 0;
         for(int i = 0; i < purchases.size(); i++) {
             subtotal += (purchases.get(i).getTotal());
         }
@@ -61,7 +62,7 @@ public class Sale extends Transaction{
     double calculateTotal() {
         subtotal = calculateSubtotal();
         tax = calculateTax();
-        
+        total = 0;
         total = tax + subtotal;
         return total;
     }
