@@ -47,7 +47,7 @@ public class Rental extends Transaction{
     double calculateSubtotal() {
         subtotal = 0;
         for(int i = 0; i < rentals.size(); i++) {
-            subtotal += (rentals.get(i).getTotal());
+            subtotal =+ (rentals.get(i).getTotal());
         }
         System.out.println("Subtotal: " + subtotal);
         return subtotal;

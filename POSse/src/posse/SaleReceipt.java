@@ -17,17 +17,17 @@ public class SaleReceipt extends Receipt{
     StringBuilder sb = new StringBuilder();
     String s = "Sale Receipt:\n\n";
     sb.append(s);
-    DecimalFormat f = new DecimalFormat("##.00");
     for(int i = 0; i < purchases.size(); i++){
       Item item = purchases.get(i).getItem();
       sb.append(item.getItemID() + "\t");
       sb.append(item.getName() + "\t");
-      sb.append(purchases.get(i).getQuantity() + "\t");
-      sb.append("$" + f.format(purchases.get(i).getTotal()));
+      sb.append(purchases.get(i).getQuantity());
       sb.append("\n");
     }
     
     text = sb.toString();
+
+    DecimalFormat f = new DecimalFormat("##.00");
     text += ("\n\nSubtotal: " + "$" + f.format(subtotal));
     text += ("\nTax: " + "$" + f.format(tax));
     text += ("\nTotal: " + "$" + f.format(total));

@@ -84,19 +84,21 @@ public class PersistentStorage{
   }
   ////////
   public void addUser(int id, String password, boolean managerStatus) throws SQLException {
-    String query = null;
+    String query;
+    System.out.println(managerStatus);
         if (managerStatus == true) {
-            query = "INSERT INTO Users VALUES ("+id+",1,'"+password+"');";
+            query = "INSERT INTO Users (ID, AccessLevel, Password) VALUES ("+id+"," + 1 + ",'"+password+"')";
         }
         else {
-            query = "INSERT INTO Users VALUES ("+id+",0,"+password+"');";
+            query = "INSERT INTO Users (ID, AccessLevel, Password) VALUES (" + id + "," + 0 + "," + "'" + password + "')";
+            System.out.println(query);
         }
         try {
           int i = s.executeUpdate(query);
           System.out.println("User added.");
         }
         catch (Exception ex) {
-            System.out.println("User could not be added.");
+            System.out.println(ex.getMessage() + " User could not be added.");
         }
   }
   /////////
