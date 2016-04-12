@@ -146,13 +146,13 @@ public class PersistentStorage{
         int num = returngetQuantity(itemID);
         if(num == -1){
             
-            String query = "INSERT INTO InventoryReturn VALUES ("+itemID+", "+ quantity+ ", "+price+"');";
+            String query = "INSERT INTO InventoryReturn VALUES ("+itemID+","+ quantity+ ","+price+");";
             try {
               int i = s.executeUpdate(query);
               System.out.println("Return added.");
             }
             catch (Exception ex) {
-                System.out.println("Return could not be added.");
+                System.out.println(ex.getMessage() + " Return could not be added.");
             }
             return false;
         }
