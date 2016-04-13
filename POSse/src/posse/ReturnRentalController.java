@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class ReturnRentalController implements Initializable {
 
     User user;
-    Inventory inv;
+    RentInventory inv;
     
     @FXML
     private Label userID;
@@ -59,7 +59,7 @@ public class ReturnRentalController implements Initializable {
             int i1 = Integer.parseInt(id);
             int i2 = Integer.parseInt(num);
 
-            AbstractItem item = user.addItem(i1, i2);
+            AbstractItem item = user.addRentalReturnItem(i1, i2);
             itemID.setText("");
             quantity.setText("");
             
@@ -93,7 +93,7 @@ public class ReturnRentalController implements Initializable {
         int id = user.getID();
         userID.setText("Cashier ID: " + id);
         try{
-            inv = new Inventory();
+            inv = new RentInventory();
         }
         catch(Exception e){}
     }     

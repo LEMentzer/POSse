@@ -70,7 +70,15 @@ public class User {
       }
       return null;
   }
-  
+  public AbstractItem addRentalReturnItem(int id, int quantity){
+      try{
+        return ((Returns)t).addRentalItem(id, quantity);
+      }
+      catch(SQLException e){
+          System.out.println("sql didn't work");
+      }
+      return null;
+  }
   public String getReceipt(){
     Receipt r = t.printReceipt();
     return r.getText();
