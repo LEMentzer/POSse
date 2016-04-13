@@ -240,9 +240,8 @@ public class PersistentStorage{
             return true;
         }
         catch(SQLException ex){
-            
+            return false;
         }
-        return false;
     }
   public double getPrice(int itemID){
     String query = "SELECT * FROM InventorySale WHERE UPC = "+itemID;
@@ -316,7 +315,7 @@ public class PersistentStorage{
     try{
       ResultSet rs = s.executeQuery(query);
       rs.next();
-      return (rs.getString(2));
+      return (rs.getString(3));
     }
     catch(Exception ex){
       System.out.println(ex.getMessage());
@@ -328,7 +327,7 @@ public class PersistentStorage{
       try{
           ResultSet rs = s.executeQuery(query);
           rs.next();
-          return (rs.getString(3));
+          return (rs.getString(4));
       }
       catch(Exception ex){
           System.out.println(ex.getMessage());
@@ -340,7 +339,7 @@ public class PersistentStorage{
     try{
       ResultSet rs = s.executeQuery(query);
       rs.next();
-      return (rs.getString(3));
+      return (rs.getString(2));
     }
     catch(Exception ex){
       System.out.println(ex.getMessage());

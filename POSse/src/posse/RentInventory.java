@@ -18,7 +18,7 @@ public class RentInventory {
     }
     public boolean checkItem(int itemID){
         try{
-            return data.checkItem(itemID);
+            return data.rentalcheckItem(itemID);
         }
         catch(SQLException e){
             
