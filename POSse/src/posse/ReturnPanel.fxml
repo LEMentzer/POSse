@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="257.0" prefWidth="294.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="posse.ReturnPanelController">
    <children>
-      <Button fx:id="salebutton" layoutX="44.0" layoutY="61.0" mnemonicParsing="false" onAction="#saleReturnAction" text="Return Sale Item" />
+      <Button fx:id="salebutton" layoutX="32.0" layoutY="61.0" mnemonicParsing="false" onAction="#saleReturnAction" text="Return Sale Item" />
       <Button fx:id="returnbutton" layoutX="32.0" layoutY="153.0" mnemonicParsing="false" onAction="#rentalReturnAction" text="Return Rental Item" />
    </children>
 </AnchorPane>
