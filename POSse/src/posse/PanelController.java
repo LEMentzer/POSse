@@ -66,7 +66,7 @@ public class PanelController implements Initializable {
         Stage stage; 
         Parent root;
         stage=(Stage) saleButton.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("Return.fxml"));
+        root = FXMLLoader.load(getClass().getResource("ReturnPanel.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
