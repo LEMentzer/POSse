@@ -53,6 +53,8 @@ public class PersistentStorage{
     String query = "SELECT * FROM Users WHERE ID = "+id+" AND Password = "+password;
     try{
       result = s.executeQuery(query);
+      result.next();
+      int value = Integer.valueOf(result.getString(1));
     }
     catch(Exception ex){
       System.out.println("Incorrect login!");
@@ -116,10 +118,9 @@ public class PersistentStorage{
     String query = "SELECT * FROM InventorySale WHERE UPC = "+itemID;
     try{
       result = s.executeQuery(query);
-      if(result != null){
-        return true;
-      }
-      return false;
+      result.next();
+      int value = Integer.valueOf(result.getString(1));
+      return true;
     }
     catch(Exception ex){
       return false;
@@ -129,10 +130,9 @@ public class PersistentStorage{
         String query = "SELECT * FROM InventoryRental WHERE UPC = "+itemID;
         try{
             result = s.executeQuery(query);
-            if(result != null){
-                return true;
-            }
-            return false;
+            result.next();
+            int value = Integer.valueOf(result.getString(1));
+            return true;
         }
         catch(Exception ex){
             return false;
@@ -272,7 +272,7 @@ public class PersistentStorage{
     try{
       ResultSet rs = s.executeQuery(query);
       rs.next();
-      return Integer.valueOf(rs.getString(1));
+      return Integer.valueOf(rs.getString(2));
     }
     catch(Exception ex){
       return -1;
