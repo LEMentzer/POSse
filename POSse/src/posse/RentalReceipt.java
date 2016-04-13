@@ -23,8 +23,9 @@ public class RentalReceipt extends Receipt{
       sb.append(item.getItemID() + "\t");
       sb.append(item.getName() + "\t");
       sb.append(rentals.get(i).getQuantity() + "\t");
-      sb.append("$" + f.format(rentals.get(i).getTotal()) + "\t");
-      sb.append("Return by: " + rentals.get(i).getReturnDate());
+      sb.append("\n\t Security Deposit: $" + f.format(rentals.get(i).getItem().getPrice()));
+      sb.append("\n\t Subtotal: $" + f.format(rentals.get(i).getTotal()));
+      sb.append("\n\t Return by: " + rentals.get(i).getReturnDate());
       sb.append("\n");
     }
     

@@ -34,7 +34,7 @@ public class Rental extends Transaction{
         String name = inv.getName(input);
         // GET NAME
         Item it = new Item(input, name, price, true);
-        RentalItem ri = new RentalItem(it, quantity, price*quantity, 30);
+        RentalItem ri = new RentalItem(it, quantity, (price+5)*quantity, 30);
         rentals.add(ri);
         inv.decrementQuantity(input, quantity);
         return ri;
