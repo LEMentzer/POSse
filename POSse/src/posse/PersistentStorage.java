@@ -66,8 +66,7 @@ public class PersistentStorage{
     try{
       ResultSet rs = s.executeQuery(query);
       rs.next();
-      int value = Integer.valueOf(rs.getString(3));
-      System.out.println(value);
+      int value = Integer.valueOf(rs.getString(2));
       if(value == 1){
           return true;
       }
