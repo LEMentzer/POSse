@@ -63,13 +63,17 @@ public class ReturnController implements Initializable {
             itemID.setText("");
             quantity.setText("");
             
+            
             DecimalFormat f = new DecimalFormat("##.00");
-            sale.appendText(id + "\t" + item.getItem().getName() + "\t" + num + "\t" + f.format(item.getTotal()) + "\n");
+            if(item != null) {
+                sale.appendText(id + "\t" + item.getItem().getName() + "\t" + num + "\t" + f.format(item.getTotal()) + "\n");
+            }
         }
         catch(NumberFormatException ex){
 
         }
         
+        System.out.println("here toooo");
         DecimalFormat f = new DecimalFormat("##.00");
         subtotal.setText(String.valueOf(f.format(user.getTotal())));
     }

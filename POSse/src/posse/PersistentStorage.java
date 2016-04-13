@@ -115,11 +115,13 @@ public class PersistentStorage{
   }
   
   public boolean checkItem(int itemID) throws SQLException{
+      System.out.println("Checking item in InventorySale");
     String query = "SELECT * FROM InventorySale WHERE UPC = "+itemID;
     try{
       result = s.executeQuery(query);
       result.next();
       int value = Integer.valueOf(result.getString(1));
+      System.out.println("Found it");
       return true;
     }
     catch(Exception ex){
@@ -127,17 +129,35 @@ public class PersistentStorage{
     }
   }
   public boolean rentalcheckItem(int itemID) throws SQLException{
+      System.out.println("Rental check Item");
         String query = "SELECT * FROM InventoryRental WHERE UPC = "+itemID;
         try{
             result = s.executeQuery(query);
             result.next();
             int value = Integer.valueOf(result.getString(1));
+            System.out.println("Found it");
             return true;
         }
         catch(Exception ex){
             return false;
         }
     }
+  
+  public boolean returnCheckItem(int itemID) throws SQLException {
+      System.out.println("Checking in returnCheckItem");
+      String query = "SELECT * FROM InventoryReturn WHERE UPC = "+itemID;
+        try{
+            result = s.executeQuery(query);
+            result.next();
+            int value = Integer.valueOf(result.getString(1));
+            System.out.println("Found it");
+            return true;
+        }
+        catch(Exception ex){
+            System.out.println("hello there");
+            return false;
+        }
+  }
   public boolean incrementQuantity(int itemID, int quantity){
     int num = getQuantity(itemID);
     int newnum = num + quantity;

@@ -16,11 +16,12 @@ private static PersistentStorage data = null;
     }
     public boolean checkItem(int itemID){
         try{
-            return data.checkItem(itemID);
+            return data.returnCheckItem(itemID);
         }
         catch(SQLException e){
             
         }
+        System.out.println("Returning false in ReturnInventory");
         return false;
     }
     public boolean incrementQuantity(int itemID, int quantity, double price){

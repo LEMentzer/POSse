@@ -20,25 +20,26 @@ public class Returns extends Transaction{
         returnTax = 0;
     }
     ReturnItem addRentalItem(int input, int quantity) throws SQLException {
-        RentInventory inv = new RentInventory();
+        System.out.println("heyy thereee");
         ReturnRentalInventory retinv = new ReturnRentalInventory();
-        if(!inv.checkItem(input)) {
-            System.out.println("not in inventory");
+        if(!retinv.checkItem(input)) {
+            System.out.println("Doesn't exist");
             return null;
         }
-        double price = inv.getPrice(input);
-        String name = inv.getName(input);
+        double price = retinv.getPrice(input);
+        String name = retinv.getName(input);
         Item it = new Item(input, name, price, true);
         ReturnItem ret = new ReturnItem(it, quantity, price*quantity);
         returns.add(ret);
         
-        // increment quantity bc adding return
         retinv.incrementQuantity(input, quantity, price);
         return ret;
     }
     ReturnItem addItem(int input, int quantity) throws SQLException {
+        System.out.println("Adding return item");
         ReturnInventory retinv = new ReturnInventory();
         if(!retinv.checkItem(input)) {
+            System.out.println("returning null");
             return null;
         }
         double price = retinv.getPrice(input);

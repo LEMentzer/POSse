@@ -63,7 +63,9 @@ public class FXMLDocumentController implements Initializable {
             quantity.setText("");
             
             DecimalFormat f = new DecimalFormat("##.00");
-            sale.appendText(id + "\t" + item.getItem().getName() + "\t" + num + "\t" + f.format(item.getTotal()) + "\n");
+            if(item != null ){
+               sale.appendText(id + "\t" + item.getItem().getName() + "\t" + num + "\t" + f.format(item.getTotal()) + "\n");
+            }
         }
         catch(NumberFormatException ex){
 

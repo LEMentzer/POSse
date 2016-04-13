@@ -16,7 +16,7 @@ private static PersistentStorage data = null;
     }
     public boolean checkItem(int itemID){
         try{
-            return data.checkItem(itemID);
+            return data.rentalcheckItem(itemID);
         }
         catch(SQLException e){
             
