@@ -37,35 +37,21 @@ public class Returns extends Transaction{
         return ret;
     }
     ReturnItem addItem(int input, int quantity) throws SQLException {
-        Inventory inv = new Inventory();
         ReturnInventory retinv = new ReturnInventory();
-        if(!inv.checkItem(input)) {
+        if(!retinv.checkItem(input)) {
             return null;
         }
-        double price = inv.getPrice(input);
-        String name = inv.getName(input);
+        double price = retinv.getPrice(input);
+        String name = retinv.getName(input);
         Item it = new Item(input, name, price, true);
         ReturnItem ret = new ReturnItem(it, quantity, price*quantity);
         returns.add(ret);
         
-        // increment quantity bc adding return
         retinv.incrementQuantity(input, quantity, price);
         return ret;
     }
     
     Boolean removeItem(int input, int quantity) throws SQLException {
-        Inventory inv = new Inventory();
-        if(!inv.checkItem(input)) {
-            return false;
-        }
-        Double price = inv.getPrice(input);
-        String name = inv.getName(input);
-        Item it = new Item(input, name, price, true);
-        ReturnItem ret = new ReturnItem(it, quantity, price*quantity);
-        returns.remove(ret);
-        
-        // decrement quantity
-        inv.decrementQuantity(input, quantity);
         return true;
     }
     

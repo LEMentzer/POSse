@@ -192,7 +192,7 @@ public class PersistentStorage{
         }
     }
   public boolean returnRentalIncrementQuantity(int itemID, int quantity, double price){
-        int num = returngetQuantity(itemID);
+        int num = rentalReturnGetQuantity(itemID);
         if(num == -1){
             
             String query = "INSERT INTO RentalInventoryReturn VALUES ("+itemID+","+ quantity+ ","+price+");";
@@ -288,6 +288,17 @@ public class PersistentStorage{
             return -1;
         }
     }
+  public int rentalReturnGetQuantity(int itemID) {
+      String query = "SELECT * FROM RentalInventoryReturn WHERE UPC = "+itemID;
+      try {
+          ResultSet rs = s.executeQuery(query);
+          rs.next();
+          return Integer.valueOf(rs.getString(2));
+      }
+      catch(Exception ex) {
+          return -1;
+      }
+  }
   public int returngetQuantity(int itemID){
         String query = "SELECT * FROM InventoryReturn WHERE UPC = "+itemID;
         try{
