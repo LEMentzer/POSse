@@ -13,12 +13,16 @@
         <tabs>
           <Tab text="Cash">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="total" layoutX="50.0" layoutY="52.0" text="Total: " />
-                        <Button fx:id="paidButton" layoutX="165.0" layoutY="400.0" mnemonicParsing="false" onAction="#paidAction" text="Paid" />
-                     </children>
-                  </AnchorPane>
+                <ScrollPane>
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="total" layoutX="50.0" layoutY="52.0" text="Total: " />
+                              <Button fx:id="paidButton" layoutX="165.0" layoutY="400.0" mnemonicParsing="false" onAction="#paidAction" text="Paid" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
             </content>
           </Tab>
           <Tab text="Credit">
