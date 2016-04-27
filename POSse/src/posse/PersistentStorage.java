@@ -1,6 +1,7 @@
 package posse;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -100,6 +101,7 @@ public class PersistentStorage{
         }
         catch (Exception ex) {
             System.out.println(ex.getMessage() + " User could not be added.");
+            JOptionPane.showMessageDialog(null,"User already exists!");
         }
   }
   /////////
@@ -111,6 +113,7 @@ public class PersistentStorage{
         }
         catch(Exception ex) {
             System.out.println("User could not be deleted.");
+            JOptionPane.showMessageDialog(null,"User does not exist!");
         }
   }
   
@@ -125,6 +128,7 @@ public class PersistentStorage{
       return true;
     }
     catch(Exception ex){
+      JOptionPane.showMessageDialog(null,"Item does not exist!");
       return false;
     }
   }
@@ -139,6 +143,7 @@ public class PersistentStorage{
             return true;
         }
         catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Item does not exist!");
             return false;
         }
     }
@@ -154,7 +159,7 @@ public class PersistentStorage{
             return true;
         }
         catch(Exception ex){
-            System.out.println("hello there");
+            JOptionPane.showMessageDialog(null,"Item does not exist!");
             return false;
         }
   }

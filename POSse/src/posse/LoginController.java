@@ -21,6 +21,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.*;
 import java.util.Arrays;
 import java.util.ArrayList;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javax.swing.JOptionPane;
+
 
 
 /**
@@ -37,7 +41,6 @@ public class LoginController implements Initializable {
     private TextField password;
     @FXML
     private Button login;
-    
     
     
     @FXML
@@ -64,16 +67,20 @@ public class LoginController implements Initializable {
             else{
                 id.setText("");
                 password.setText("");
+                //JOptionPane.showMessageDialog(null,"asdf");
             }
         }
         catch(NumberFormatException ex){
-
+            JOptionPane.showMessageDialog(null,"asdf");
         }
         catch(NullPointerException ex){
             System.out.println("something is null");
         }
         catch(SQLException ex){
             System.out.println("sql didn't work");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"asdf");
         }
     }
     
