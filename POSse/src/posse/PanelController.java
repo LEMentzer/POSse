@@ -21,6 +21,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.*;
 import java.util.Arrays;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 
@@ -85,6 +86,9 @@ public class PanelController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Manager access level required!");
         }
 
         //user.startUsers();
